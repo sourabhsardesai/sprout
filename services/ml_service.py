@@ -1,16 +1,18 @@
+# This file has all the functions related to the apis
 import json
 
 from flask import jsonify
 import requests
 import random
-DB = []
-internal_api = 'http://127.0.0.1:5000/sentences'
+DB = [] # Db /list
+internal_api = 'http://127.0.0.1:5000/sentences' # internal api
 
 
-
+# This functions gets all the records in the DB/ list
 def get_all():
     return(json.dumps(DB))
 
+# function which detects the sentiment
 def detect_senti(respone):
     print("record")
     record = {
@@ -21,11 +23,11 @@ def detect_senti(respone):
 
 
     return record
-
+# function which seperates the sentences from a para and calls an internal api
 def foul_lang(response):
 
-    print(response['paragraph'])
-    for par in response['paragraph']:
+    print(response['paragraphs'])
+    for par in response['paragraphs']:
         print(par)
         record = {
             "fragment":str(par)
